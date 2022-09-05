@@ -6,18 +6,18 @@ services:
     restart: always
     environment:
       DB_VENDOR: POSTGRES
-      DB_ADDR: 8a30d75e7a41
+      DB_ADDR: 764a7e0bd723
       DB_PORT: 5432
-      DB_DATABASE: keycloak
+      DB_DATABASE: keycloak-production
       DB_USER: postgres
       DB_SCHEMA: public
       DB_PASSWORD: postgres
-      # KEYCLOAK_USER: admin
-      # KEYCLOAK_PASSWORD: admin
-    # Uncomment the line below if you want to specify JDBC parameters. The parameter below is just an example, and it shouldn't be used in production without knowledge. It is highly recommended that you read the PostgreSQL JDBC driver documentation in order to use it.
-    # JDBC_PARAMS: "ssl=true"
-    # volumes:
-    # C:/Tools/docker/keycloak/keycloak/:/opt/jboss/keycloak/
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin
+      # Uncomment the line below if you want to specify JDBC parameters. The parameter below is just an example, and it shouldn't be used in production without knowledge. It is highly recommended that you read the PostgreSQL JDBC driver documentation in order to use it.
+      #   #JDBC_PARAMS: "ssl=true"
+      # volumes:
+      #   - ./keycloak_data/:/opt/jboss/keycloak/
     ports:
       - 8010:8080
     networks:
@@ -25,5 +25,7 @@ services:
 
 networks:
   keycloak:
-    external:
-      name: postgres_postgres
+    name: postgres_postgres_networks
+
+volumes:
+  keycloak_data:
