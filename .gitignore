@@ -1,3 +1,2 @@
 postgres/postgres_data/
-elasticsearch-kibana-logstash/elastic_data/
-elasticsearch-kibana-logstash/logstash/
+elasticsearch-logstash-kibana/elasticsearch_data/
