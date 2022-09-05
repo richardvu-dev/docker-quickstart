@@ -1,0 +1,29 @@
+version: '3.9'
+
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:legacy
+    restart: always
+    environment:
+      DB_VENDOR: POSTGRES
+      DB_ADDR: 8a30d75e7a41
+      DB_PORT: 5432
+      DB_DATABASE: keycloak
+      DB_USER: postgres
+      DB_SCHEMA: public
+      DB_PASSWORD: postgres
+      # KEYCLOAK_USER: admin
+      # KEYCLOAK_PASSWORD: admin
+    # Uncomment the line below if you want to specify JDBC parameters. The parameter below is just an example, and it shouldn't be used in production without knowledge. It is highly recommended that you read the PostgreSQL JDBC driver documentation in order to use it.
+    # JDBC_PARAMS: "ssl=true"
+    # volumes:
+    # C:/Tools/docker/keycloak/keycloak/:/opt/jboss/keycloak/
+    ports:
+      - 8010:8080
+    networks:
+      - keycloak
+
+networks:
+  keycloak:
+    external:
+      name: postgres_postgres
